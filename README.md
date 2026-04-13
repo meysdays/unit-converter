@@ -1,6 +1,6 @@
 # Unit Converter
 
-A cross-platform unit converter app built with Expo (React Native). Instantly convert between Length, Temperature, and Weight units with a modern UI.
+A cross-platform unit converter app built with Expo (React Native). Instantly convert between Length, Temperature, and Weight units.
 
 ## Getting Started
 
