@@ -1,50 +1,132 @@
-# Welcome to your Expo app 👋
+# Separation of Concerns
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This project follows the principle of **separation of concerns** to ensure maintainability, scalability, and clarity:
 
-## Get started
+- **Screens** (e.g., onboarding, length, temperature, weight) are responsible for UI layout, user interaction, and navigation logic only.
+- **UI Components** (like `DisplayCardUnit` and `UnitInput`) are reusable, isolated building blocks for rendering and handling user input, making the UI consistent and easy to update.
+- **Conversion Logic** is kept in dedicated utility files (`src/utils/convertLength.ts`, `src/utils/convert-temperature.tsx`, `src/utils/convert-weight.ts`). This means all mathematical and unit conversion logic is separated from the UI, making it easy to test, extend, or modify without touching the interface code.
+- **Styling** is handled via utility-first CSS classes (Tailwind/uniwind), keeping style definitions out of business and logic code.
 
-1. Install dependencies
+This clear separation allows you to:
+- Update or add new units without changing UI code
+- Reuse UI components across different screens
+- Maintain and test conversion logic independently
+- Quickly adapt the UI or logic for new requirements
+
+
+# Code Structure
+
+```
+unit-converter/
+├── app.json
+├── package.json
+├── tsconfig.json
+├── assets/
+│   └── images/
+├── src/
+│   ├── global.css
+│   ├── uniwind-types.d.ts
+│   ├── app/
+│   │   ├── _layout.tsx
+│   │   ├── index.tsx
+│   │   ├── length.tsx
+│   │   ├── temperature.tsx
+│   │   └── weight.tsx
+│   ├── components/
+│   │   ├── screens/
+│   │   │   ├── onboarding-screen/
+│   │   │   │   └── index.tsx
+│   │   │   └── utility-screen/
+│   │   │       ├── length.tsx
+│   │   │       ├── temperature.tsx
+│   │   │       └── weight.tsx
+│   │   ├── ui/
+│   │   │   ├── card.tsx
+│   │   │   └── unit-input.tsx
+│   │   └── ui/
+│   │       └── screen.tsx
+│   ├── utils/
+│   │   ├── convert-temperature.tsx
+│   │   ├── convert-weight.ts
+│   │   └── convertLength.ts
+├── ...
+```
+
+# Unit Converter
+
+A cross-platform unit converter app built with Expo (React Native). Instantly convert between Length, Temperature, and Weight units with a modern UI.
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) (install globally with `npm install -g expo-cli`)
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <your-repo-url>
+   cd unit-converter
+   ```
+
+2. **Install dependencies:**
 
    ```bash
    npm install
    ```
 
-2. Start the app
+3. **Start the development server:**
 
    ```bash
-   npx expo start
+   npm start
    ```
 
-In the output, you'll find options to open the app in a
+   - Use the Expo Go app on your device, or an emulator/simulator, to preview.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Project Structure & Implementation
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+- **Onboarding Screen:**  
+   Located at `src/components/screens/onboarding-screen/index.tsx`.  
+   Presents the app title, description, and navigation cards for Length, Temperature, and Weight conversions.
 
-## Get a fresh project
+- **Unit Conversion Screens:**
+  - `src/components/screens/utility-screen/length.tsx`
+  - `src/components/screens/utility-screen/temperature.tsx`
+  - `src/components/screens/utility-screen/weight.tsx`  
+    Each screen allows users to input a value, select source and target units, and see the converted result in real time.
 
-When you're ready, run:
+- **UI Components:**
+  - `DisplayCardUnit` (`src/components/ui/card.tsx`): Renders a styled card for each unit type.
+  - `UnitInput` (`src/components/ui/unit-input.tsx`): Handles input and selection of units, used for both input and output fields.
 
-```bash
-npm run reset-project
-```
+- **Conversion Logic:**
+  - `src/utils/convertLength.ts`: Converts between meters, kilometers, centimeters, and millimeters.
+  - `src/utils/convert-temperature.tsx`: Converts between Celsius, Fahrenheit, and Kelvin.
+  - `src/utils/convert-weight.ts`: Converts between kilograms, grams, milligrams, and pounds.
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+- **Navigation:**  
+   Uses [expo-router](https://expo.dev/router/introduction/) for file-based navigation.
 
-## Learn more
+- **Styling:**  
+   Uses Tailwind CSS classes via [uniwind](https://www.npmjs.com/package/uniwind) for utility-first styling.
 
-To learn more about developing your project with Expo, look at the following resources:
+## Scripts
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- `npm start` — Start Expo development server
+- `npm run android` — Run on Android emulator/device
+- `npm run ios` — Run on iOS simulator/device
+- `npm run web` — Run in web browser
 
-## Join the community
+## Customization
 
-Join our community of developers creating universal apps.
+- Add or modify units in the utility files under `src/utils/`.
+- Update UI components in `src/components/ui/` for custom design.
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Learn More
+
+- [Expo Documentation](https://docs.expo.dev/)
+- [React Native Documentation](https://reactnative.dev/)
