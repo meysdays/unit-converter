@@ -1,3 +1,44 @@
+# Unit Converter
+
+A cross-platform unit converter app built with Expo (React Native). Instantly convert between Length, Temperature, and Weight units with a modern UI.
+
+## Getting Started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) (install globally with `npm install -g expo-cli`)
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone <your-repo-url>
+   cd unit-converter
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm start
+   ```
+
+   - Use the Expo Go app on your device, or an emulator/simulator, to preview.
+
+## Project Structure & Implementation
+
+- **Onboarding Screen:**  
+   Located at `src/components/screens/onboarding-screen/index.tsx`.  
+   Presents the app title, description, and navigation cards for Length, Temperature, and Weight conversions.
+
 # Separation of Concerns
 
 This project follows the principle of **separation of concerns** to ensure maintainability, scalability, and clarity:
@@ -51,47 +92,6 @@ unit-converter/
 │   │   └── convertLength.ts
 ├── ...
 ```
-
-# Unit Converter
-
-A cross-platform unit converter app built with Expo (React Native). Instantly convert between Length, Temperature, and Weight units with a modern UI.
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) (v18+ recommended)
-- [npm](https://www.npmjs.com/) (comes with Node.js)
-- [Expo CLI](https://docs.expo.dev/get-started/installation/) (install globally with `npm install -g expo-cli`)
-
-### Installation
-
-1. **Clone the repository:**
-
-   ```bash
-   git clone <your-repo-url>
-   cd unit-converter
-   ```
-
-2. **Install dependencies:**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server:**
-
-   ```bash
-   npm start
-   ```
-
-   - Use the Expo Go app on your device, or an emulator/simulator, to preview.
-
-## Project Structure & Implementation
-
-- **Onboarding Screen:**  
-   Located at `src/components/screens/onboarding-screen/index.tsx`.  
-   Presents the app title, description, and navigation cards for Length, Temperature, and Weight conversions.
 
 - **Unit Conversion Screens:**
   - `src/components/screens/utility-screen/length.tsx`
