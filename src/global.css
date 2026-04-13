@@ -1,0 +1,9 @@
+@import 'tailwindcss';
+@import 'uniwind';
+
+@theme {
+  --font-regular: "regular";
+  --font-medium: "medium";
+  --font-bold: "bold";
+  --color-primary: #111111;
+}
