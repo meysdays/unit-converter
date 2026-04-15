@@ -1,12 +1,14 @@
-import { Stack } from "expo-router";
-import "../global.css";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
-  useFonts,
   AlegreyaSans_400Regular,
   AlegreyaSans_500Medium,
-  AlegreyaSans_700Bold
+  AlegreyaSans_700Bold,
+  useFonts,
 } from "@expo-google-fonts/alegreya-sans";
+import { Stack } from "expo-router";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import CustomizeModal from "../components/ui/task-manager/modal";
+import { TaskManagerContextProvider } from "../context/task-manager/task-context";
+import "../global.css";
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
@@ -20,14 +22,12 @@ export default function RootLayout() {
   }
   return (
     <SafeAreaProvider>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-        }}
-      >
-        <Stack.Screen name="index" />
-        <Stack.Screen name="length" />
-      </Stack>
+      <TaskManagerContextProvider>
+        <Stack screenOptions={{headerShown: false}}>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        </Stack>
+        <CustomizeModal />
+      </TaskManagerContextProvider>
     </SafeAreaProvider>
   );
 }

@@ -1,0 +1,5 @@
+export {default as MeasureIcon} from './measure.svg'
+export {default as TaskIcon} from './task.svg'
+export {default as EditIcon} from './pencil.svg'
+export {default as DeleteIcon} from './trash.svg'
+export {default as AddIcon} from './plus.svg'
